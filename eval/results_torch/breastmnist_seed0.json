@@ -1,0 +1,8 @@
+{
+  "dataset": "breastmnist",
+  "seed": 0,
+  "epochs": 5,
+  "test_acc": 0.7307692307692307,
+  "wall_s": 8.8,
+  "backend": "pytorch-cpu"
+}

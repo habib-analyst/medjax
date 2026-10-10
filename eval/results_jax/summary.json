@@ -1,0 +1,32 @@
+{
+  "breastmnist": {
+    "dataset": "breastmnist",
+    "seed": 0,
+    "epochs": 5,
+    "val_acc": 0.7307692170143127,
+    "test_acc": 0.7307692170143127,
+    "train_loss": 0.5776267766952514,
+    "wall_s": 41.3,
+    "backend": "jax-cpu"
+  },
+  "pneumoniamnist": {
+    "dataset": "pneumoniamnist",
+    "seed": 0,
+    "epochs": 5,
+    "val_acc": 0.8931297659873962,
+    "test_acc": 0.8525640964508057,
+    "train_loss": 0.22277888172381632,
+    "wall_s": 116.3,
+    "backend": "jax-cpu"
+  },
+  "dermamnist": {
+    "dataset": "dermamnist",
+    "seed": 0,
+    "epochs": 5,
+    "val_acc": 0.671984076499939,
+    "test_acc": 0.6748129725456238,
+    "train_loss": 0.9100543769923124,
+    "wall_s": 173.4,
+    "backend": "jax-cpu"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "volume": "(128,128,64,1)",
+  "medjax_jit_s": 0.0877,
+  "medjax_eager_s": 0.188,
+  "numpy_scipy_s": 0.6643,
+  "speedup_jit_vs_numpy": 7.57,
+  "speedup_jit_vs_eager": 2.14,
+  "max_abs_diff": 3.872272,
+  "note": "jax.image.resize and scipy.ndimage.zoom use different sampling-grid conventions (both valid linear interpolation); outputs are not bit-identical. The jit-vs-eager column (same code) isolates the pure jit payoff."
+}

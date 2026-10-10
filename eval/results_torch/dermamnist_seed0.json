@@ -1,0 +1,8 @@
+{
+  "dataset": "dermamnist",
+  "seed": 0,
+  "epochs": 5,
+  "test_acc": 0.6902743142144638,
+  "wall_s": 90.9,
+  "backend": "pytorch-cpu"
+}

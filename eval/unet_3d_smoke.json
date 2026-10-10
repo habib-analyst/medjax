@@ -1,0 +1,9 @@
+{
+  "steps": 6,
+  "loss_first": 1.4631,
+  "loss_last": 1.1717,
+  "loss_decreased": true,
+  "heldout_mean_dice_fg": 0.2202,
+  "volume": "(48,48,48,1)",
+  "wall_s": 220.3
+}

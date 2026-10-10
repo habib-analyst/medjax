@@ -1,0 +1,26 @@
+{
+  "breastmnist": {
+    "dataset": "breastmnist",
+    "seed": 0,
+    "epochs": 5,
+    "test_acc": 0.7307692307692307,
+    "wall_s": 8.8,
+    "backend": "pytorch-cpu"
+  },
+  "pneumoniamnist": {
+    "dataset": "pneumoniamnist",
+    "seed": 0,
+    "epochs": 5,
+    "test_acc": 0.8477564102564102,
+    "wall_s": 65.3,
+    "backend": "pytorch-cpu"
+  },
+  "dermamnist": {
+    "dataset": "dermamnist",
+    "seed": 0,
+    "epochs": 5,
+    "test_acc": 0.6902743142144638,
+    "wall_s": 90.9,
+    "backend": "pytorch-cpu"
+  }
+}

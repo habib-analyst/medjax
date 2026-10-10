@@ -1,0 +1,10 @@
+{
+  "dataset": "dermamnist",
+  "seed": 0,
+  "epochs": 5,
+  "val_acc": 0.671984076499939,
+  "test_acc": 0.6748129725456238,
+  "train_loss": 0.9100543769923124,
+  "wall_s": 173.4,
+  "backend": "jax-cpu"
+}

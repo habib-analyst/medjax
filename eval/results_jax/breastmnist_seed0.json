@@ -1,0 +1,10 @@
+{
+  "dataset": "breastmnist",
+  "seed": 0,
+  "epochs": 5,
+  "val_acc": 0.7307692170143127,
+  "test_acc": 0.7307692170143127,
+  "train_loss": 0.5776267766952514,
+  "wall_s": 41.3,
+  "backend": "jax-cpu"
+}

@@ -1,0 +1,8 @@
+{
+  "dataset": "pneumoniamnist",
+  "seed": 0,
+  "epochs": 5,
+  "test_acc": 0.8477564102564102,
+  "wall_s": 65.3,
+  "backend": "pytorch-cpu"
+}

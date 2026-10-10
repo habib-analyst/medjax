@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medjax"
+version = "0.1.0"
+description = "JAX-native medical imaging toolkit: functional transforms, NIfTI I/O, Flax NNX models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Habib Ur Rehman" }]
+keywords = ["jax", "medical-imaging", "deep-learning", "segmentation", "flax"]
+dependencies = [
+    "jax>=0.4.30",
+    "flax>=0.8.0",
+    "optax>=0.2.0",
+    "nibabel>=5.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+[project.optional-dependencies]
+dataloaders = ["grain>=0.2"]
+checkpoints = ["orbax-checkpoint>=0.5"]
+# NOTE: medjax reads MedMNIST .npz files directly — the `medmnist` PyPI
+# package is NOT required (it would pull in torch; we stay JAX-only).
+dev = ["pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://github.com/habib-analyst/medjax"
+
+[tool.setuptools.packages.find]
+include = ["medjax*"]

@@ -1,0 +1,10 @@
+{
+  "dataset": "pneumoniamnist",
+  "seed": 0,
+  "epochs": 5,
+  "val_acc": 0.8931297659873962,
+  "test_acc": 0.8525640964508057,
+  "train_loss": 0.22277888172381632,
+  "wall_s": 116.3,
+  "backend": "jax-cpu"
+}

@@ -1,0 +1,97 @@
+=== Sat Oct 10 17:54:47 UTC 2026 JAX training ===
+ep 00 train_loss=0.5904 val_loss=0.5858 val_acc=0.7308
+ep 01 train_loss=0.6042 val_loss=0.5910 val_acc=0.7308
+ep 02 train_loss=0.5752 val_loss=0.5735 val_acc=0.7308
+ep 03 train_loss=0.5668 val_loss=0.5736 val_acc=0.7308
+ep 04 train_loss=0.5776 val_loss=0.5736 val_acc=0.7308
+DONE breastmnist: test_acc=0.7308 wall=41s
+ep 00 train_loss=0.5615 val_loss=0.5090 val_acc=0.7748
+ep 01 train_loss=0.4071 val_loss=0.3637 val_acc=0.8168
+ep 02 train_loss=0.2972 val_loss=0.2866 val_acc=0.8702
+ep 03 train_loss=0.2400 val_loss=0.2436 val_acc=0.8817
+ep 04 train_loss=0.2228 val_loss=0.2391 val_acc=0.8931
+DONE pneumoniamnist: test_acc=0.8526 wall=116s
+ep 00 train_loss=1.2684 val_loss=1.0813 val_acc=0.6690
+ep 01 train_loss=1.0181 val_loss=0.9743 val_acc=0.6610
+ep 02 train_loss=0.9532 val_loss=0.9313 val_acc=0.6670
+ep 03 train_loss=0.9250 val_loss=0.9098 val_acc=0.6680
+ep 04 train_loss=0.9101 val_loss=0.9057 val_acc=0.6720
+DONE dermamnist: test_acc=0.6748 wall=173s
+=== Sat Oct 10 18:00:40 UTC 2026 PyTorch parity ===
+ep 00 train_loss=0.6174
+ep 01 train_loss=0.5861
+ep 02 train_loss=0.5747
+ep 03 train_loss=0.5656
+ep 04 train_loss=0.5851
+DONE breastmnist: test_acc=0.7308
+ep 00 train_loss=0.5558
+ep 01 train_loss=0.4045
+ep 02 train_loss=0.2962
+ep 03 train_loss=0.2488
+ep 04 train_loss=0.2308
+DONE pneumoniamnist: test_acc=0.8478
+ep 00 train_loss=1.2120
+ep 01 train_loss=1.0422
+ep 02 train_loss=0.9640
+ep 03 train_loss=0.9054
+ep 04 train_loss=0.8880
+DONE dermamnist: test_acc=0.6903
+=== Sat Oct 10 18:03:43 UTC 2026 transform benchmark ===
+Traceback (most recent call last):
+  File "/home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/bench_transforms.py", line 79, in <module>
+    main()
+  File "/home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/bench_transforms.py", line 53, in main
+    t_jit = bench(jit_pipe, vol)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/bench_transforms.py", line 36, in bench
+    jax.block_until_ready(fn(arg)) if isinstance(arg, jax.Array) else fn(arg)
+                          ^^^^^^^
+  File "/home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/bench_transforms.py", line 20, in medjax_pipeline
+    x = T.resample_to_spacing(x, (2.0, 2.0, 2.0), (1.0, 1.0, 1.0))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/../medjax/transforms.py", line 78, in resample_to_spacing
+    new_spatial = tuple(int(round(s * z)) for s, z in zip(x.shape[:-1], zoom))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/../medjax/transforms.py", line 78, in <genexpr>
+    new_spatial = tuple(int(round(s * z)) for s, z in zip(x.shape[:-1], zoom))
+                        ^^^^^^^^^^^^^^^^^
+jax.errors.ConcretizationTypeError: Abstract tracer value encountered where concrete value is expected: traced array with shape int32[]
+The problem arose with the `int` function. If trying to convert the data type of a value, try using `x.astype(int)` or `jnp.array(x, int)` instead.
+The error occurred while tracing the function medjax_pipeline at /home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/bench_transforms.py:18 for jit. This value became a tracer due to JAX operations on these lines:
+
+  operation a:f32[] = max b 9.99999993922529e-09:f32[]
+    from line /home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/../medjax/transforms.py:39:21 (rescale_intensity)
+
+  operation a:f32[128,128,64,1] = mul b 1.0:f32[]
+    from line /home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/../medjax/transforms.py:40:11 (rescale_intensity)
+
+  operation a:f32[128,128,64,1] = add b 0.0:f32[]
+    from line /home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/../medjax/transforms.py:40:11 (rescale_intensity)
+
+  operation a:f32[3] = div b c
+    from line /home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/../medjax/transforms.py:77:11 (resample_to_spacing)
+
+  operation a:f32[] = mul 128.0:f32[] b
+    from line /home/hatch/workspace/goals/github-portfolio-linkedin-presence-buildout/build/medjax/scripts/../medjax/transforms.py:78:34 (resample_to_spacing.<locals>.<genexpr>)
+
+See https://docs.jax.dev/en/latest/errors.html#jax.errors.ConcretizationTypeError
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
+=== Sat Oct 10 18:03:51 UTC 2026 3D UNet smoke ===
+data: (8, 48, 48, 48, 1) (8, 48, 48, 48)
+step 0: dicece=1.4631
+step 1: dicece=1.3417
+step 2: dicece=1.2780
+step 3: dicece=1.2325
+step 4: dicece=1.2004
+step 5: dicece=1.1717
+{
+  "steps": 6,
+  "loss_first": 1.4631,
+  "loss_last": 1.1717,
+  "loss_decreased": true,
+  "heldout_mean_dice_fg": 0.2202,
+  "volume": "(48,48,48,1)",
+  "wall_s": 220.3
+}
+=== Sat Oct 10 18:07:37 UTC 2026 ALL EVALS COMPLETE ===
